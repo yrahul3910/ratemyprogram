@@ -4,7 +4,7 @@ import dotenv
 import json
 import urllib
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build/', static_url_path='/')
 
 # PyMongo setup
 config = dotenv.dotenv_values('.env')
@@ -15,6 +15,10 @@ url = config['URL']
 conn_url = f'mongodb+srv://{urllib.parse.quote(username)}:{urllib.parse.quote(password)}@{url}/{db}?retryWrites=true&w=majority'
 client = pymongo.MongoClient(conn_url)
 db = client.rmp
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 @app.route('/api/reviews/submit', methods=['POST'])
 def submit_review():

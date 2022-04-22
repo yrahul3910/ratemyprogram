@@ -16,7 +16,7 @@ function submitReview() {
         review: document.getElementById('new-review').value
     };
 
-    fetch('http://127.0.0.1:5000/api/reviews/submit', {
+    fetch('/api/reviews/submit', {
         method: 'POST',
         mode: 'no-cors',
         headers: {

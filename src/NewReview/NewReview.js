@@ -1,6 +1,14 @@
 import './NewReview.sass';
 
 function submitReview() {
+    // Check empty values
+    if (document.getElementById('new-university').value === '' ||
+        document.getElementById('new-program').value === '' ||
+        document.getElementById('new-degree').value === '' ||
+        document.getElementById('new-rating').value === '') {
+        return;
+    }
+
     // Process bad rating values
     let rating = document.getElementById('new-rating').value;
     if (rating < 1)

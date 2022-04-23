@@ -26,7 +26,23 @@ function submitReview() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            if (data['status'] === 'ok') {
+                let el = document.getElementById('new-submit');
+                el.classList.add('success');
+                el.innerHTML = 'Submitted!';
+                setTimeout(() => {
+                    el.classList.remove('success');
+                    el.innerHTML = 'Submit';
+                }, 2000);
+            } else {
+                let el = document.getElementById('new-submit');
+                el.classList.add('failure');
+                el.innerHTML = 'Failed!';
+                setTimeout(() => {
+                    el.classList.remove('failure');
+                    el.innerHTML = 'Submit';
+                }, 2000);
+            }
         })
         .catch(error => {
             console.log(error);
@@ -43,7 +59,7 @@ export default function NewReview() {
                 <input id="new-program" type="text" placeholder="Program (e.g. Computer Science)" />
                 <input id="new-rating" type="number" min={1} max={5} placeholder="Rating (1-5)" />
                 <textarea id="new-review" rows={10} placeholder="Review" />
-                <button onClick={submitReview}>Submit</button>
+                <button id="new-submit" onClick={submitReview}>Submit</button>
             </div>
             <div className="column">
                 <h2>Find reviews.</h2>

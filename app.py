@@ -4,7 +4,7 @@ import dotenv
 import json
 import urllib
 
-app = Flask(__name__, static_folder='../build/', static_url_path='/')
+app = Flask(__name__, static_folder='./build/', static_url_path='/')
 
 # PyMongo setup
 config = dotenv.dotenv_values('.env')
@@ -46,3 +46,7 @@ def submit_review():
 @app.route('/*', methods=['POST'])
 def catch_all():
     print(request.json)
+
+
+if __name__ == '__main__':
+    app.run()

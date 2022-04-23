@@ -34,6 +34,13 @@ function submitReview() {
                     el.classList.remove('success');
                     el.innerHTML = 'Submit';
                 }, 2000);
+
+                // Clear form
+                document.getElementById('new-university').value = '';
+                document.getElementById('new-program').value = '';
+                document.getElementById('new-degree').value = '';
+                document.getElementById('new-rating').value = '';
+                document.getElementById('new-review').value = '';
             } else {
                 let el = document.getElementById('new-submit');
                 el.classList.add('failure');

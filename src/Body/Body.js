@@ -13,6 +13,7 @@ export default function Body() {
                 when choosing a program.
             </p>
             <NewReview />
+            <div id="review-list"></div>
         </main>
     )
 }
